@@ -99,7 +99,13 @@ public class BattleSystem {
                             + player.getSkills().get(i).getClass().getSimpleName());
                 }
 
-                int skillChoice = Integer.parseInt(sc.nextLine()) - 1;
+                int skillChoice;
+                try {
+                    skillChoice = Integer.parseInt(sc.nextLine()) - 1;
+                } catch (NumberFormatException e) {
+                    System.out.println("❌ Invalid input! Please enter numbers only for skill choice.");
+                    return false;
+                }
 
                 if (skillChoice < 0 ||
                         skillChoice >= player.getSkills().size()) {
@@ -146,19 +152,26 @@ public class BattleSystem {
                 System.out.println("2. Mana Potion ("
                         + player.getManaPotion() + ")");
 
-                int potionChoice = Integer.parseInt(sc.nextLine());
+                try {
+                    int potionChoice = Integer.parseInt(sc.nextLine());
 
-                if (potionChoice == 1) {
+                    if (potionChoice == 1) {
 
-                    player.useHealthPotion();
+                        player.useHealthPotion();
 
-                } else if (potionChoice == 2) {
+                    } else if (potionChoice == 2) {
 
-                    player.useManaPotion();
+                        player.useManaPotion();
 
-                } else {
+                    } else {
 
-                    System.out.println("❌ Invalid potion choice!");
+                        System.out.println("❌ Invalid potion choice!");
+                        return false;
+                    }
+
+                } catch (NumberFormatException e) {
+
+                    System.out.println("❌ Invalid input! Please enter numbers only for potion choice.");
                     return false;
                 }
 
