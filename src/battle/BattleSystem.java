@@ -3,11 +3,10 @@
 // =========================
 package battle;
 
-import java.util.Scanner;
-import skill.Skill;
-
 import character.Character;
 import enemy.Enemy;
+import java.util.Scanner;
+import skill.Skill;
 
 public class BattleSystem {
 
@@ -42,19 +41,23 @@ public class BattleSystem {
 
     public boolean playerTurn(Character player, Enemy enemy) {
 
-        System.out.println("\n1. Basic Attack");
-        System.out.println("2. Use Skill");
-        System.out.println("3. Use Potion");
-
         int choice;
 
         // =========================
         // VALIDATE INPUT
         // =========================
         try {
-
+            System.out.println("\n1. Basic Attack");
+            System.out.println("2. Use Skill");
+            System.out.println("3. Use Potion");
             System.out.print("Enter choice: ");
             choice = Integer.parseInt(sc.nextLine());
+
+            if(choice < 1 || choice > 3) {
+
+                System.out.println("❌ Invalid choice!");
+                return false;
+            }
 
         } catch (Exception e) {
 
@@ -69,7 +72,7 @@ public class BattleSystem {
         System.out.print("Confirm action? (yes/no): ");
         String confirm = sc.nextLine();
 
-        if (confirm.equalsIgnoreCase("yes")
+        if (!confirm.equalsIgnoreCase("yes")
                 && !confirm.equalsIgnoreCase("y")) {
 
             System.out.println("❌ Action cancelled!");
@@ -96,7 +99,7 @@ public class BattleSystem {
                             + player.getSkills().get(i).getClass().getSimpleName());
                 }
 
-                int skillChoice = sc.nextInt() - 1;
+                int skillChoice = Integer.parseInt(sc.nextLine()) - 1;
 
                 if (skillChoice < 0 ||
                         skillChoice >= player.getSkills().size()) {
@@ -143,7 +146,7 @@ public class BattleSystem {
                 System.out.println("2. Mana Potion ("
                         + player.getManaPotion() + ")");
 
-                int potionChoice = sc.nextInt();
+                int potionChoice = Integer.parseInt(sc.nextLine());
 
                 if (potionChoice == 1) {
 

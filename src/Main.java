@@ -161,6 +161,7 @@ public class Main {
 
                 player.fullHeal();
                 player.recoverMana();
+                player.resetPotions();
 
                 stage = 1;
 

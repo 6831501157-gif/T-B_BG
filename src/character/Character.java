@@ -4,8 +4,8 @@
 package character;
 
 import java.util.ArrayList;
-import skill.Skill;
 import java.util.Random;
+import skill.Skill;
 
 public abstract class Character {
 
@@ -205,5 +205,13 @@ public abstract class Character {
         }
 
         System.out.println("🔵 Used Mana Potion!");
+    }
+
+    public void resetPotions() {
+
+        healthPotion = 3;
+        manaPotion = 2;
+
+        System.out.println("🧪 Potions replenished!");
     }
 }

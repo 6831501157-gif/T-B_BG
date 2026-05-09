@@ -4,7 +4,6 @@
 package enemy;
 
 import character.Character;
-
 import java.util.Random;
 
 public class Enemy {
@@ -14,7 +13,7 @@ public class Enemy {
     private int attack;
     private int rewardExp;
     private boolean enraged;
-    private boolean poisoned;
+    private int  poisoned;
 
 
     public Enemy(String name, int hp, int attack, int rewardExp) {
@@ -23,7 +22,7 @@ public class Enemy {
         this.attack = attack;
         this.rewardExp = rewardExp;
         this.enraged = false;
-        this.poisoned = false;
+        this.poisoned = poisoned;
     }
 
     public void takeDamage(int dmg) {
@@ -43,7 +42,7 @@ public class Enemy {
 
     public void applyPoisonDamage() {
 
-        if (poisoned) {
+        if (poisoned > 0) {
 
             int poisonDamage = 10;
 
@@ -96,7 +95,7 @@ public class Enemy {
 
     public void applyPoison() {
 
-        poisoned = true;
+        poisoned = 3;
 
         System.out.println(name + " is poisoned!");
     }
